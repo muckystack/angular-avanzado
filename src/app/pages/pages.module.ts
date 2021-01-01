@@ -13,6 +13,7 @@ import { PagesComponent } from './pages.component';
 import { FormsModule } from '@angular/forms';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromisesComponent } from './promises/promises.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -23,7 +24,8 @@ import { PromisesComponent } from './promises/promises.component';
     ProgressComponent,
     PagesComponent,
     AccountSettingsComponent,
-    PromisesComponent
+    PromisesComponent,
+    RxjsComponent
   ],
   exports: [
     DashboardComponent,
