@@ -12,26 +12,7 @@ export class RxjsComponent implements OnInit {
 
   constructor() {
 
-    
-    const obs$ = new Observable(observer => {
-      let i = -1;
-      const interval = setInterval(() => {
-        
-        i++;
-        observer.next(i);
-
-        if(i == 4) {
-          clearInterval(interval);
-          observer.complete();
-        }
-        if(i == 2) {
-          observer.error('i llego al valor de 2');
-        }
-
-      }, 1000);
-    });
-
-    obs$.pipe(
+    this.returnObservable().pipe(
       retry(1)
     ).subscribe(
       value => console.log('Subs: ', value),
@@ -42,6 +23,24 @@ export class RxjsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  returnObservable(): Observable<number> {
+    let i = -1;
+    return new Observable<number>((observer) => {
+      const interval = setInterval(() => {
+        i++;
+        observer.next(i);
+
+        if (i === 4) {
+          clearInterval(interval);
+          observer.complete();
+        }
+        if (i === 2) {
+          observer.error('i llego al valor de 2');
+        }
+      }, 1000);
+    });
   }
 
 }
