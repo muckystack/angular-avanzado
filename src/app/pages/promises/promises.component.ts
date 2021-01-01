@@ -13,24 +13,50 @@ export class PromisesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const promise = new Promise((resolve, reject) => {
-
-      if(false) {
-        resolve('Hola mundo');
-      }else {
-        reject('Algo salio mal');
-      }
-      
+    // this.getUsers();
+    this.getUsers().then(users => {
+      console.log(users);
     });
 
-    promise.then((msg) => {
-      console.log(msg);
-    }).catch(error => {
-      console.log('error en mi promesa', error);
-      
-    })
+    // const promise = new Promise((resolve, reject) => {
 
-    console.log('Fin del init');
+    //   if(false) {
+    //     resolve('Hola mundo');
+    //   }else {
+    //     reject('Algo salio mal');
+    //   }
+      
+    // });
+
+    // promise.then((msg) => {
+    //   console.log(msg);
+    // }).catch(error => {
+    //   console.log('error en mi promesa', error);
+      
+    // })
+
+    // console.log('Fin del init');
+
+  }
+
+  // reqres.in/api/users
+
+  // getUsers() {
+
+  //   fetch('https://reqres.in/api/users')
+  //     .then(resp => {
+  //       resp.json().then(body => console.log(body))
+  //     });
+  
+  // }
+ 
+  getUsers() {
+
+    return new Promise(resolve => {
+      fetch('https://reqres.in/api/users')
+        .then(resp => resp.json())
+        .then(body => resolve(body));
+    });
 
   }
 
