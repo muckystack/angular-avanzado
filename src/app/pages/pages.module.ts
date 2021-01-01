@@ -12,6 +12,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { PagesComponent } from './pages.component';
 import { FormsModule } from '@angular/forms';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromisesComponent } from './promises/promises.component';
 
 
 
@@ -21,7 +22,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     Graficas1Component,
     ProgressComponent,
     PagesComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    PromisesComponent
   ],
   exports: [
     DashboardComponent,
