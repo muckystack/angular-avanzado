@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, interval } from 'rxjs';
-import { retry, take, map } from 'rxjs/operators';
+import { retry, take, map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs',
   templateUrl: './rxjs.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class RxjsComponent implements OnInit {
-
   constructor() {
-
     // this.returnObservable().pipe(
     //   retry(1)
     // ).subscribe(
@@ -20,21 +17,19 @@ export class RxjsComponent implements OnInit {
     //   () => console.info('Terminado')
     // );
 
-    this.returnInterval().subscribe(
-      console.log
-    )
-
+    this.returnInterval().subscribe(console.log);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   returnInterval(): Observable<number> {
-    return interval(1000)
-    .pipe(take(4),
-    map(valor => {
-      return valor + 1;
-    }));
+    return interval(1000).pipe(
+      take(10),
+      map((valor) => {
+        return valor + 1;
+      }),
+      filter(valor => (valor % 2 === 0) ? true: false)
+    );
   }
 
   returnObservable(): Observable<number> {
@@ -54,5 +49,4 @@ export class RxjsComponent implements OnInit {
       }, 1000);
     });
   }
-
 }
